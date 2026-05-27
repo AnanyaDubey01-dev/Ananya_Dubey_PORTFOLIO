@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const navLinks = [
   { label: 'Home', href: '#hero' },
   { label: 'Work', href: '#work' },
-  { label: 'Resume', href: '#resume' },
+  { label: 'Journal', href: '#journal' },
 ];
 
 export default function Navbar() {

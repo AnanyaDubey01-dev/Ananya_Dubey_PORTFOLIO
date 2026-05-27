@@ -87,9 +87,9 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center justify-center px-4 sm:px-6 py-24 text-center">
         {/* Eyebrow */}
-        <p className="blur-in text-xs text-muted uppercase tracking-[0.3em] mb-6 sm:mb-8">
+        {/* <p className="blur-in text-xs text-muted uppercase tracking-[0.3em] mb-6 sm:mb-8">
           COLLECTION '26
-        </p>
+        </p> */}
 
         {/* Name — centered over video */}
         <h1
@@ -128,13 +128,13 @@ export default function Hero() {
             <span className="relative">See Works</span>
           </a>
 
-          {/* Reach Out Button */}
+          {/* Journal Button */}
           <a
-            href="mailto:ananydubey4694@gmail.com"
+            href="#journal"
             className="group relative rounded-full text-sm px-7 py-3.5 border-2 border-stroke bg-bg text-text-primary hover:border-transparent transition-all duration-300 hover:scale-105"
           >
             <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
-            <span className="relative">Reach out...</span>
+            <span className="relative">Journal</span>
           </a>
         </div>
       </div>

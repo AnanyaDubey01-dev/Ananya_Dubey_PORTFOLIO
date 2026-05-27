@@ -185,7 +185,7 @@ export default function Journal() {
   };
 
   return (
-    <section className="bg-bg py-16 md:py-24">
+    <section id="journal" className="bg-bg py-16 md:py-24">
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
         {/* Header */}
         <motion.div
