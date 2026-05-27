@@ -16,7 +16,7 @@ export default function Hero() {
   const nameRef = useRef<HTMLHeadingElement>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const textParallaxRef = useRef<HTMLDivElement>(null);
-  const hasAnimated = useRef(false);
+  const isMobileRef = useRef(false);
 
   const attachVideo = useCallback((node: HTMLVideoElement | null) => {
     videoRef.current = node;
@@ -58,7 +58,9 @@ export default function Hero() {
 
   useEffect(() => {
     const updateViewportMode = () => {
-      setIsMobile(window.innerWidth < 768);
+      const mobile = window.innerWidth < 768;
+      isMobileRef.current = mobile;
+      setIsMobile(mobile);
     };
 
     updateViewportMode();
@@ -108,19 +110,21 @@ export default function Hero() {
   }, [isMobile]);
 
   useEffect(() => {
-    if (hasAnimated.current || !nameRef.current) return;
-    hasAnimated.current = true;
+    const section = sectionRef.current;
+    const name = nameRef.current;
+    if (!section || !name) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      const particleOpacity = isMobileRef.current ? 0.35 : 0.6;
 
       tl.fromTo(
-        nameRef.current,
+        name,
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 1.2, delay: 0.1, ease: 'expo.out' }
       )
         .fromTo(
-          '.blur-in',
+          section.querySelectorAll('.blur-in'),
           { opacity: 0, filter: 'blur(10px)', y: 20 },
           {
             opacity: 1,
@@ -135,7 +139,7 @@ export default function Hero() {
         .fromTo(
           '.hero-particles',
           { opacity: 0 },
-          { opacity: isMobile ? 0.35 : 0.6, duration: 1.2, ease: 'power2.out' },
+          { opacity: particleOpacity, duration: 1.2, ease: 'power2.out' },
           '-=0.8'
         )
         .fromTo(
@@ -145,10 +149,10 @@ export default function Hero() {
           '-=0.5'
         )
         .to('.scroll-indicator', { opacity: 1, duration: 0.8 }, '-=0.3');
-    }, sectionRef);
+    }, section);
 
     return () => ctx.revert();
-  }, [isMobile]);
+  }, []);
 
   const handleToggleMute = useCallback(async () => {
     const video = videoRef.current;
@@ -254,7 +258,7 @@ export default function Hero() {
 
         <HeroVideoControls isMuted={isMuted} onToggleMute={handleToggleMute} />
 
-        <div className="scroll-indicator opacity-0 absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10">
+        <div className="scroll-indicator opacity-0 absolute bottom-12 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-3 z-10">
           <span className="text-xs text-muted uppercase tracking-[0.2em]">Scroll</span>
           <div className="relative w-px h-10 bg-stroke overflow-hidden">
             <div className="absolute inset-x-0 h-4 bg-text-primary/50 animate-scroll-down" />
