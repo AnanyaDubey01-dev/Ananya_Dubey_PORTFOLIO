@@ -205,54 +205,50 @@ export default function Hero() {
           blendOpacity={isMobile ? 0.35 : 0.6}
         />
 
-        <h1
-          ref={nameRef}
-          className="hero-name hero-name-stack hero-name-bottom-left font-display italic text-[clamp(2.4rem,12vw,7.5rem)] leading-[0.85] tracking-[-0.03em] text-white"
+        <div
+          ref={textParallaxRef}
+          className="hero-content-left hero-gpu-layer absolute z-10 flex flex-col items-start text-left px-4 sm:px-6"
         >
-          <span className="hero-name-line block">Ananya</span>
-          <span className="hero-name-line block">Dubey</span>
-        </h1>
+          <h1
+            ref={nameRef}
+            className="hero-name hero-name-stack font-display italic text-[clamp(2.4rem,12vw,7.5rem)] leading-[0.85] tracking-[-0.03em] text-white mb-4 sm:mb-6"
+          >
+            <span className="hero-name-line block">Ananya</span>
+            <span className="hero-name-line block">Dubey</span>
+          </h1>
 
-        <div className="relative z-10 flex h-full w-full items-center justify-center px-4 sm:px-6 py-20">
-          <div className="hero-content-row mx-auto flex w-full max-w-6xl flex-col items-center justify-center gap-10 md:flex-row md:items-center md:justify-end md:gap-12 lg:gap-16">
-            <div
-              ref={textParallaxRef}
-              className="hero-text-column hero-gpu-layer w-full md:w-[52%] flex flex-col items-center md:items-start text-center md:text-left"
+          <p className="blur-in text-base md:text-xl text-muted mb-3 sm:mb-4 max-w-md">
+            A{' '}
+            <span
+              key={roleIndex}
+              className="font-display italic text-text-primary animate-role-fade-in inline-block"
             >
-              <p className="blur-in text-base md:text-xl text-muted mb-3 sm:mb-4 max-w-md">
-                A{' '}
-                <span
-                  key={roleIndex}
-                  className="font-display italic text-text-primary animate-role-fade-in inline-block"
-                >
-                  {roles[roleIndex]}
-                </span>{' '}
-                lives in India.
-              </p>
+              {roles[roleIndex]}
+            </span>{' '}
+            lives in India.
+          </p>
 
-              <p className="blur-in text-sm md:text-base text-muted max-w-md mb-8 sm:mb-10">
-                Building intelligent systems at the intersection of software and the real world —
-                from AI-powered applications to embedded IoT ecosystems.
-              </p>
+          <p className="blur-in text-sm md:text-base text-muted max-w-md mb-8 sm:mb-10">
+            Building intelligent systems at the intersection of software and the real world —
+            from AI-powered applications to embedded IoT ecosystems.
+          </p>
 
-              <div className="blur-in inline-flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4">
-                <a
-                  href="#work"
-                  className="group relative rounded-full text-sm px-5 sm:px-7 py-3 sm:py-3.5 bg-text-primary text-bg hover:bg-bg hover:text-text-primary transition-all duration-300 hover:scale-105"
-                >
-                  <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
-                  <span className="relative">See Works</span>
-                </a>
+          <div className="blur-in inline-flex flex-wrap justify-start gap-3 sm:gap-4">
+            <a
+              href="#work"
+              className="group relative rounded-full text-sm px-5 sm:px-7 py-3 sm:py-3.5 bg-text-primary text-bg hover:bg-bg hover:text-text-primary transition-all duration-300 hover:scale-105"
+            >
+              <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+              <span className="relative">See Works</span>
+            </a>
 
-                <a
-                  href="#journal"
-                  className="group relative rounded-full text-sm px-5 sm:px-7 py-3 sm:py-3.5 border-2 border-stroke bg-bg/80 text-text-primary hover:border-transparent transition-all duration-300 hover:scale-105"
-                >
-                  <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
-                  <span className="relative">Journal</span>
-                </a>
-              </div>
-            </div>
+            <a
+              href="#journal"
+              className="group relative rounded-full text-sm px-5 sm:px-7 py-3 sm:py-3.5 border-2 border-stroke bg-bg/80 text-text-primary hover:border-transparent transition-all duration-300 hover:scale-105"
+            >
+              <span className="absolute inset-[-2px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+              <span className="relative">Journal</span>
+            </a>
           </div>
         </div>
 

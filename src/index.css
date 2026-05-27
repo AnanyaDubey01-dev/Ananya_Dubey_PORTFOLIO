@@ -142,13 +142,16 @@ body {
   display: block;
 }
 
-.hero-name-bottom-left {
-  position: absolute;
+.hero-name-bottom-left,
+.hero-content-left {
   bottom: 2rem;
-  left: 1rem;
+  left: 0;
+  max-width: min(92vw, 36rem);
+}
+
+.hero-content-left {
+  position: absolute;
   z-index: 15;
-  margin: 0;
-  text-align: left;
 }
 
 .hero-text-column {
@@ -289,9 +292,10 @@ body {
     padding-left: 2.5rem;
   }
 
-  .hero-name-bottom-left {
+  .hero-content-left {
     bottom: 2.5rem;
     left: 1.5rem;
+    max-width: 32rem;
   }
 
   .hero-main-video {
